@@ -13,6 +13,7 @@ import me.woo.jpastudy.mybatis.mapper.AccountMapperV2;
 import me.woo.jpastudy.mybatis.vo.AccountMyBatisVO;
 
 @SpringBootTest
+@Spring
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Import(DBConfiguration.class)
 public class MyBatisTest {
