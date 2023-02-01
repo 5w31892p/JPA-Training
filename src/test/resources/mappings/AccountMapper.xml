@@ -6,17 +6,14 @@
     [템플릿 설명]
     - 해당 파일은 SQL 문을 작성하는 곳입니다.
 -->
-<mapper namespace="me.whitebear.jpastudy.mybatis.mapper.AccountMapper">
+<mapper namespace="me.woo.jpastudy.mybatis.mapper.AccountMapper">
 
-    <select id="selectAccount" resultType="me.whitebear.jpastudy.mybatis.vo.AccountMyBatisVO">
-        SELECT id,
-               username,
-               password
-        FROM account
+    <select id="selectAccount" resultType="me.woo.jpastudy.mybatis.vo.AccountMyBatisVO">
+        SELECT id, username, password FROM account
         WHERE id = #{id}
     </select>
 
-    <insert id="insertAccount" parameterType="me.whitebear.jpastudy.mybatis.vo.AccountMyBatisVO">
+    <insert id="insertAccount" parameterType="me.woo.jpastudy.mybatis.vo.AccountMyBatisVO">
         INSERT INTO account(username, password)
         VALUES (#{username}, #{password});
     </insert>

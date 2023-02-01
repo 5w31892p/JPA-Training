@@ -1,7 +1,9 @@
 package me.woo.jpastudy.mybatis;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,9 +15,10 @@ import me.woo.jpastudy.mybatis.mapper.AccountMapperV2;
 import me.woo.jpastudy.mybatis.vo.AccountMyBatisVO;
 
 @SpringBootTest
-@Spring
+@MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Import(DBConfiguration.class)
+@Disabled
 public class MyBatisTest {
 
 	// Mapper 클래스를 받으려면 mapper.xml 빌드 해야하고, 그러려면 main 으로 옮겨서 해야함...

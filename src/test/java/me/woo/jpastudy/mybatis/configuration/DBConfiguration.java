@@ -12,17 +12,17 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@MapperScan(basePackages = "me.whitebear.jpastudy.mapper.*")
+@MapperScan(basePackages = "me.woo.jpastudy.mybatis.mapper.*")
 @EnableTransactionManagement
 public class DBConfiguration {
 
 	@Bean
-	public SqlSessionFactory sqlSessionFactory(DataSource source) throws Exception {
+	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 		final SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-		bean.setDataSource(source);
-
+		bean.setDataSource(dataSource);
+		// mapping xml 파일 위치를 bean mapper location 에 등록
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-		bean.setMapperLocations(resolver.getResource("classpath:mapping/*.xml"));
+		bean.setMapperLocations(resolver.getResources("classpath:mappings/*.xml"));
 		return bean.getObject();
 	}
 
