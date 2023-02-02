@@ -17,8 +17,11 @@ import me.woo.jpastudy.user.UserRepository;
 @Rollback(value = false) // 롤백 햐지 않도록
 class UserChannelRepositoryTest {
 
-	@Autowired
-	private UserChannelRepository userChannelRepository;
+	// @Autowired
+	// private UserChannelRepository userChannelRepository;
+	// cascade = CascadeType.ALL, orphanRemoval = true 설정으로 노필요
+	// 아예 리포지토리 파일이 없어도 상관이 없음 -> UserChannelRepository 삭제
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -36,7 +39,8 @@ class UserChannelRepositoryTest {
 		// when
 		var savedChannel = channelRepository.insertChannel(newChannel);
 		var savedUser = userRepository.insertUser(newUser);
-		var savedUserChannel = userChannelRepository.insertUserChannel(newUserChannel);
+		// var savedUserChannel = userChannelRepository.insertUserChannel(newUserChannel);
+		// cascade = CascadeType.ALL, orphanRemoval = true 설정으로 노필요
 
 		// then
 		var foundChannel = channelRepository.selectChannel(savedChannel.getId());

@@ -5,6 +5,7 @@ import static lombok.ToString.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -52,7 +53,7 @@ public class User {
 	/**
 	 * 연관관계 - Foreign Key 값을 따로 컬럼으로 정의하지 않고 연관 관계로 정의합니다.
 	 */
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	@Exclude
 	private Set<UserChannel> userChannel = new LinkedHashSet<>(); // LinkedHashSet 은 중복방지 & 순서보장
 
