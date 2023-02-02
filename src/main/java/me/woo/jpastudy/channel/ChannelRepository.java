@@ -1,10 +1,11 @@
 package me.woo.jpastudy.channel;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+public interface ChannelRepository extends JpaRepository<Channel, Long> {
+}
 
+/* Raw JPA
 @Repository
 public class ChannelRepository {
 
@@ -19,4 +20,4 @@ public class ChannelRepository {
 	public Channel selectChannel(long id) {
 		return entityManager.find(Channel.class, id);
 	}
-}
+}*/

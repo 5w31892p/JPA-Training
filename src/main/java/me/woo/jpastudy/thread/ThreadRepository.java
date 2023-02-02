@@ -1,10 +1,11 @@
 package me.woo.jpastudy.thread;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+public interface ThreadRepository extends JpaRepository<Thread, Long> {
+}
 
+/* Raw JPA
 @Repository
 public class ThreadRepository {
 
@@ -19,4 +20,4 @@ public class ThreadRepository {
 	public Thread selectThread(long id) {
 		return entityManager.find(Thread.class, id);
 	}
-}
+}*/

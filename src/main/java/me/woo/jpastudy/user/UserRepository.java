@@ -1,13 +1,41 @@
 package me.woo.jpastudy.user;
 
-import java.util.Objects;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import org.springframework.stereotype.Repository;
+import me.woo.jpastudy.my.MyRepository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.persistence.PersistenceContext;
+public interface UserRepository extends JpaRepository<User, Long>, MyRepository<User> {
+}
 
+/* repository 기능 제한 두번째 방법
+
+public interface UserRepository extends MyRepository<User, Long> {
+}
+
+// 원래는 다른 interface에 있어야 함
+@NoRepositoryBean
+public interface MyRepository<User, ID extends Serializable> extends Repository<User, ID> {
+
+	User save(User entity);
+
+	List<User> findByUsername(String username);
+
+}
+*/
+
+
+/* repository 기능 제한 첫번째 방법
+@RepositoryDefinition(domainClass = User.class, idClass = Long.class)
+public interface UserRepository {
+
+  Optional<User> findByUsername(String userName);
+  // findByPassword를 막기 위해
+}
+*/
+
+
+
+/* Raw JPA
 @Repository
 public class UserRepository {
 
@@ -30,4 +58,4 @@ public class UserRepository {
 	public User selectUser(long id) {
 		return entityManager.find(User.class, id);
 	}
-}
+}*/

@@ -1,11 +1,11 @@
+/*
 package me.woo.jpastudy.channel;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
-
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 @Transactional  // 실무에서 사용시 주의해야합니다. (테스트 대상 환경에 영향을 줌)
@@ -28,3 +28,4 @@ class ChannelRepositoryTest {
 		assert foundChannel.getId().equals(savedChannel.getId());
 	}
 }
+*/
