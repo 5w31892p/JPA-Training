@@ -1,3 +1,4 @@
+/*
 package me.woo.jpastudy.my;
 
 import java.util.List;
@@ -49,3 +50,4 @@ public class MyuserRepositoryTest {
 			userNameList.containsAll(List.of(newUser.getUsername(), newUser2.getUsername())));
 	}
 }
+*/

@@ -1,11 +1,24 @@
 package me.woo.jpastudy.user;
 
+import java.util.List;
+
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-import me.woo.jpastudy.my.MyRepository;
+public interface UserRepository extends JpaRepository<User, Long> {
+	// 아래와 같이 AS user_password 로 Alias(AS) 를 걸어주면
+	@Query("SELECT u, u.password AS customField FROM User u WHERE u.username = ?1")
+	List<User> findByUsernameWithCustomField(String username, Sort sort);
 
+	@Query("SELECT u FROM User u WHERE u.username = ?1")
+	List<User> findByUsername(String username, Sort sort);
+}
+
+/* findAll로 username 다 조회하는 방법
 public interface UserRepository extends JpaRepository<User, Long>, MyRepository<User> {
 }
+*/
 
 /* repository 기능 제한 두번째 방법
 
