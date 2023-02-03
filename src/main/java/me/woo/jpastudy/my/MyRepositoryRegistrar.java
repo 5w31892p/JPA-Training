@@ -1,6 +1,16 @@
+/*
 package me.woo.jpastudy.my;
 
-/* 테스트 후 주석 처리
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.BeanNameGenerator;
+import org.springframework.beans.factory.support.GenericBeanDefinition;
+import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
+import org.springframework.core.type.AnnotationMetadata;
+
+import lombok.Setter;
 
 // @EnableJpaRepositories 의 JpaRepositoriesRegistrar 를 통해서 등록되는 것을 직접 만들어 보는 클래스
 
@@ -34,5 +44,5 @@ public class MyRepositoryRegistrar implements ImportBeanDefinitionRegistrar {
 		}
 	}
 }
-*/
 
+*/

@@ -1,6 +1,10 @@
+/*
 package me.woo.jpastudy.my;
 
-/* 테스트 성공 후 주석 처리
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 
 // MyRepositoryRegistrar, MyRepository Test
 @Import(MyRepositoryRegistrar.class) // bean 주입, component도 아니고 그냥 클래스라서 이렇게 주입해줌

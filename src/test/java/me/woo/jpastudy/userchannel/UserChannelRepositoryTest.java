@@ -29,48 +29,47 @@ class UserChannelRepositoryTest {
 	@Autowired
 	private ChannelRepository channelRepository;
 
-/*  @Test
-  @DisplayName("채널에 유저 가입 테스트")
-  void userjoinChannelTest() {
-    // given
-    var newChannel = Channel.builder().name("new-channel").build();
-    var newUser = User.builder().username("new-user").password("new-pass").build();
-    var newUserChannel = newChannel.joinUser(newUser);
+	/*@Test
+	@DisplayName("채널에 유저 가입 테스트")
+	void userjoinChannelTest() {
+		// given
+		var newChannel = Channel.builder().name("new-channel").build();
+		var newUser = User.builder().username("new-user").password("new-pass").build();
+		var newUserChannel = newChannel.joinUser(newUser);
 
-    // when
-    var savedChannel = channelRepository.insertChannel(newChannel);
-    var savedUser = userRepository.findByUsername(newUser.getUsername());
-    // var savedUserChannel = userChannelRepository.insertUserChannel(newUserChannel);
-    // cascade = CascadeType.ALL, orphanRemoval = true 설정으로 노필요
+		// when
+		var savedChannel = channelRepository.save(newChannel);
+		var savedUser = userRepository.findByUsername(newUser.getUsername());
+		// var savedUserChannel = userChannelRepository.insertUserChannel(newUserChannel);
+		// cascade = CascadeType.ALL, orphanRemoval = true 설정으로 노필요
 
-    // then
-    var foundChannel = channelRepository.selectChannel(savedChannel.getId());
-    assert foundChannel.getUserChannels().stream()
-        .map(UserChannel::getChannel)
-        .map(Channel::getName)
-        .anyMatch(name -> name.equals(newChannel.getName()));
-  }
+		// then
+		var foundChannel = channelRepository.findById(savedChannel.getId());
+		assert foundChannel.get().getUserChannels().stream()
+			.map(UserChannel::getChannel)
+			.map(Channel::getName)
+			.anyMatch(name -> name.equals(newChannel.getName()));
+	}
 
-  @Test
-  @DisplayName("채널에 유저가입 테스트 (with Cascade)")
-  void userJoinchannelWithCascadeTest() {
-    // given
-    var newUser = User.builder().username("new_user").password("pass").build();
-    var newChannel = Channel.builder().name("new_group").build();
-    var savedUser = userRepository.insertUser(newUser);
+	@Test
+	@DisplayName("채널에 유저가입 테스트 (with Cascade)")
+	void userJoinchannelWithCascadeTest() {
+		// given
+		var newUser = User.builder().username("new_user").password("pass").build();
+		var newChannel = Channel.builder().name("new_group").build();
+		var savedUser = userRepository.save(newUser);
 
-    // when
-    newChannel.joinUser(savedUser);
-    channelRepository.insertChannel(newChannel);
+		// when
+		newChannel.joinUser(savedUser);
+		channelRepository.save(newChannel);
 
-    // then
-    var foundUser = userRepository.selectUser(savedUser.getId());
-    assert foundUser.getUserChannel().stream()
-        .map(UserChannel::getChannel)
-        .map(Channel::getName)
-        .anyMatch(name -> name.equals(newChannel.getName()));
-  }*/
-
+		// then
+		var foundUser = userRepository.findById(savedUser.getId());
+		assert foundUser.get().getUserChannel().stream()
+			.map(UserChannel::getChannel)
+			.map(Channel::getName)
+			.anyMatch(name -> name.equals(newChannel.getName()));
+	}*/
 	@Test
 	void userCustomFieldSortingTest() {
 		// given

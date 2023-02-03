@@ -14,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class PageDTO {
-
 	private final Integer currentPage;
 	private final Integer size;
 	private String sortBy;

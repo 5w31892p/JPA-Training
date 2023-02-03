@@ -1,3 +1,5 @@
+/*
+// 불필요 코드
 package me.woo.jpastudy.my;
 
 import java.util.List;
@@ -24,3 +26,4 @@ public class MyUserRepositoryImple implements MyRepository<User> {
 		return entityManager.createQuery("SELECT u.username FROM User AS u", String.class).getResultList();
 	}
 }
+*/
