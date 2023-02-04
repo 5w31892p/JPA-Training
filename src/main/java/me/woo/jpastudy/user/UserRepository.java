@@ -13,6 +13,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	@Query("SELECT u FROM User u WHERE u.username = ?1")
 	List<User> findByUsername(String username, Sort sort);
+
+	List<UserProfile> findByUsername(String username);
+
+	List<UserInfo> findByPassword(String password);
+
+	<T> List<T> findByProfileImageUrlStartingWith(String profileImageUrlStartWith, Class<T> type);
 }
 
 /* findAll로 username 다 조회하는 방법

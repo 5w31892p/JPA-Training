@@ -3,6 +3,8 @@ package me.woo.jpastudy.user;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.hibernate.annotations.DynamicInsert;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,6 +29,7 @@ import me.woo.jpastudy.userchannel.UserChannel;
 // jpa
 @Entity
 @Table(name = "users")
+@DynamicInsert
 public class User {
 
 	/**
