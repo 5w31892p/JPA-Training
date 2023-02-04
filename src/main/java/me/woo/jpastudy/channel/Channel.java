@@ -14,8 +14,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -96,7 +94,7 @@ public class Channel extends Timestamp {
 	/**
 	 * 라이프 사이클 메소드
 	 */
-	@PrePersist
+/*	@PrePersist
 	public void prePersist() {
 		super.updateModifiedAt();
 		super.updateCreatedAt();
@@ -105,5 +103,5 @@ public class Channel extends Timestamp {
 	@PreUpdate
 	public void PreUpdate() {
 		super.updateModifiedAt();
-	}
+	}*/
 }

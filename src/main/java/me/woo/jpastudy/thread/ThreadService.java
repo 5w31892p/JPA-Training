@@ -1,6 +1,7 @@
 package me.woo.jpastudy.thread;
 
-import org.hibernate.mapping.List;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 
 import me.woo.jpastudy.channel.Channel;

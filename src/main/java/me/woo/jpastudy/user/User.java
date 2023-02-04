@@ -16,6 +16,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import me.woo.jpastudy.mention.CommentMention;
 import me.woo.jpastudy.mention.ThreadMention;
 import me.woo.jpastudy.userchannel.UserChannel;
 
@@ -40,13 +41,16 @@ public class User {
 	@Column(length = 25)
 	private String password;
 
+	private String profileImageUrl;
+
 	/**
 	 * 생성자 - 약속된 형태로만 생성가능하도록 합니다.
 	 */
 	@Builder
-	public User(String username, String password) {
+	public User(String username, String password, String profileImageUrl) {
 		this.username = username;
 		this.password = password;
+		this.profileImageUrl = profileImageUrl;
 	}
 
 	/**
@@ -56,6 +60,8 @@ public class User {
 	private Set<UserChannel> userChannel = new LinkedHashSet<>(); // LinkedHashSet 은 중복방지 & 순서보장
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<ThreadMention> threadMentions = new LinkedHashSet<>();
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<CommentMention> commentMentions = new LinkedHashSet<>();
 
 	/**
 	 * 연관관계 편의 메소드 - 반대쪽에는 연관관계 편의 메소드가 없도록 주의합니다.
@@ -64,5 +70,8 @@ public class User {
 	/**
 	 * 서비스 메소드 - 외부에서 엔티티를 수정할 메소드를 정의합니다. (단일 책임을 가지도록 주의합니다.)
 	 */
+	public void updatePassword(String password) {
+		this.password = password;
+	}
 }
 

@@ -18,7 +18,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import me.woo.jpastudy.channel.Channel;
+import me.woo.jpastudy.comment.Comment;
 import me.woo.jpastudy.common.Timestamp;
+import me.woo.jpastudy.emotion.ThreadEmotion;
 import me.woo.jpastudy.mention.ThreadMention;
 import me.woo.jpastudy.user.User;
 
@@ -61,7 +63,13 @@ public class Thread extends Timestamp {
 	private Channel channel;
 
 	@OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Comment> comments = new LinkedHashSet<>();
+
+	@OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<ThreadMention> mentions = new LinkedHashSet<>();
+
+	@OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<ThreadEmotion> emotions = new LinkedHashSet<>();
 
 	/**
 	 * 연관관계 편의 메소드 - 반대쪽에는 연관관계 편의 메소드가 없도록 주의합니다.
@@ -77,8 +85,17 @@ public class Thread extends Timestamp {
 		user.getThreadMentions().add(mention);
 	}
 
-	/**
+	public void addComment(Comment comment) {
+		this.comments.add(comment);
+		comment.setThread(this);
+	}
+
+	public void addEmotion(User user, String body) {
+		var emotion = ThreadEmotion.builder().user(user).thread(this).body(body).build();
+		this.emotions.add(emotion);
+	}
+
+	/*
 	 * 서비스 메소드 - 외부에서 엔티티를 수정할 메소드를 정의합니다. (단일 책임을 가지도록 주의합니다.)
 	 */
-
 }

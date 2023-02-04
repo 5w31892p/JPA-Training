@@ -6,8 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mysema.commons.lang.IteratorAdapter;
-
 import lombok.RequiredArgsConstructor;
 import me.woo.jpastudy.channel.Channel;
 import me.woo.jpastudy.common.PageDTO;
@@ -18,6 +16,8 @@ public class ThreadServiceImpl implements ThreadService {
 
 	private final ThreadRepository threadRepository;
 
+	private final ThreadRepositoryQuery repositoryQuery;
+
 	@Override
 	public List<Thread> selectNotEmptyThreadList(Channel channel) {
 		var thread = QThread.thread;
@@ -26,9 +26,9 @@ public class ThreadServiceImpl implements ThreadService {
 		var predicate = thread.channel
 			.eq(channel)
 			.and(thread.message.isNotEmpty());
-		var threads = threadRepository.findAll(predicate);
+		// var threads = threadRepository.findAll(predicate);
 
-		return IteratorAdapter.asList(threads.iterator());
+		return List.of();// IteratorAdapter.asList(threads.iterator());
 	}
 
 	@Transactional(readOnly = true)
