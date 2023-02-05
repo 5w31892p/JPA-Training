@@ -4,15 +4,20 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.querydsl.core.types.Predicate;
+
+import me.woo.jpastudy.common.RepositoryTest;
+
+/*
+@RepositoryTest를 만들어 아래 어노테이션들을 대체함
 
 @SpringBootTest
 @Transactional  // 실무에서 사용시 주의해야합니다. (테스트 대상 환경에 영향을 줌)
 @Rollback(value = false)
+*/
+
+@RepositoryTest
 class ChannelRepositoryTest {
 
 	@Autowired

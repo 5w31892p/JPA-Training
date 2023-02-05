@@ -4,17 +4,17 @@ spring:
     url: jdbc:postgresql://localhost:5432/messenger
     username: seowoo
     password: pass
-jpa:
-  hibernate:
-    ddl-auto: create
-  properties:
+  jpa:
     hibernate:
-      format_sql: true
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
       # show_sql: true
-logging:
-  level:
-    org.hibernate.sql: debug
-    org.hibernate.type: trace # 쿼리 변수 출력
+  logging:
+    level:
+      org.hibernate.sql: debug
+      org.hibernate.type: trace # 쿼리 변수 출력
 
 # 모든 출력은 가급적 로그에 남겨야 한다.
 #> show_sql : System.out에 하이버네이트 실행 SQL 남김
